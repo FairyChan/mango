@@ -1,26 +1,716 @@
-@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap");
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f3ee;
+  color: #171717;
+  font-family: "DM Sans", Arial, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  height: 78px;
+  padding: 0 5%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #f5f3ee;
+  border-bottom: 1px solid #dedbd4;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: 5px;
+}
+
+.navLinks {
+  display: flex;
+  gap: 38px;
+
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.navLinks a {
+  transition: opacity 0.2s ease;
+}
+
+.navLinks a:hover {
+  opacity: 0.45;
+}
+
+.navActions {
+  display: flex;
+  gap: 25px;
+
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+.navActions button:hover {
+  opacity: 0.5;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  position: relative;
+
+  min-height: calc(100vh - 78px);
+
+  display: flex;
+  align-items: center;
+
+  overflow: hidden;
+}
+
+.heroImage {
+  position: absolute;
+  inset: 0;
+}
+
+.heroImage img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  filter: brightness(0.72);
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+
+  max-width: 720px;
+  padding: 8%;
+
+  color: white;
+}
+
+.eyebrow {
+  margin-bottom: 20px;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  letter-spacing: 2.5px;
+}
+
+.hero h1 {
+  margin-bottom: 30px;
+
+  font-size: clamp(55px, 8vw, 115px);
+  line-height: 0.88;
+  font-weight: 600;
+
+  letter-spacing: -5px;
+}
+
+.heroText {
+  max-width: 420px;
+
+  margin-bottom: 35px;
+
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.primaryButton {
+  display: inline-block;
+
+  padding: 16px 30px;
+
+  background: white;
+  color: #171717;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  letter-spacing: 1.5px;
+
+  transition: all 0.3s ease;
+}
+
+.primaryButton:hover {
+  background: #171717;
+  color: white;
+}
+
+/* =========================
+   INTRO
+========================= */
+
+.intro {
+  max-width: 1000px;
+
+  margin: auto;
+  padding: 130px 10%;
+
+  text-align: center;
+}
+
+.intro h2,
+.sectionHeader h2,
+.fitsIntro h2,
+.statement h2,
+.newsletter h2 {
+  margin-bottom: 30px;
+
+  font-size: clamp(40px, 5vw, 70px);
+  line-height: 0.95;
+  font-weight: 500;
+
+  letter-spacing: -3px;
+}
+
+.introText {
+  max-width: 600px;
+
+  margin: auto;
+
+  color: #666;
+
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* =========================
+   PRODUCTS
+========================= */
+
+.productsSection {
+  padding: 100px 5%;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  margin-bottom: 45px;
+}
+
+.sectionHeader h2 {
+  margin-bottom: 0;
+}
+
+.sectionHeader > a {
+  padding-bottom: 5px;
+
+  border-bottom: 1px solid #171717;
+
+  font-size: 11px;
+  letter-spacing: 1.2px;
+}
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.productImage {
+  position: relative;
+
+  aspect-ratio: 0.76;
+
+  overflow: hidden;
+
+  background: #dedbd4;
+}
+
+.productImage img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 0.6s ease;
+}
+
+.productCard:hover .productImage img {
+  transform: scale(1.04);
+}
+
+.quickAdd {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  left: 15px;
+
+  padding: 14px;
+
+  background: white;
+
+  opacity: 0;
+  transform: translateY(10px);
+
+  font-size: 10px;
+  letter-spacing: 1.5px;
+
+  transition: all 0.3s ease;
+}
+
+.productCard:hover .quickAdd {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.productInfo {
+  display: flex;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding: 15px 0 35px;
+}
+
+.productInfo h3 {
+  margin-bottom: 5px;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.productInfo p {
+  color: #777;
+  font-size: 12px;
+}
+
+.productInfo span {
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+/* =========================
+   FITS
+========================= */
+
+.fitsSection {
+  padding: 110px 5%;
+
+  background: #1b1b1b;
+  color: white;
+}
+
+.fitsIntro {
+  margin-bottom: 70px;
+}
+
+.fitsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  border-top: 1px solid #555;
+}
+
+.fitCard {
+  min-height: 300px;
+
+  padding: 30px 25px;
+
+  display: flex;
+  flex-direction: column;
+
+  border-right: 1px solid #555;
+}
+
+.fitCard:last-child {
+  border-right: none;
+}
+
+.fitCard > span {
+  color: #aaa;
+
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.fitCard h3 {
+  margin-top: auto;
+  margin-bottom: 15px;
+
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.fitCard p {
+  margin-bottom: 30px;
+
+  color: #aaa;
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.fitCard a {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+}
+
+.fitCard a:hover {
+  opacity: 0.5;
+}
+
+/* =========================
+   BRAND STATEMENT
+========================= */
+
+.statement {
+  min-height: 650px;
+
+  padding: 100px 10%;
+
+  display: flex;
+  align-items: center;
+
+  color: white;
+
+  background-image: url(
+    "https://images.unsplash.com/photo-1548883354-7622d03aca27?auto=format&fit=crop&w=1600&q=80"
+  );
+
+  background-size: cover;
+  background-position: center;
+}
+
+.statementContent {
+  max-width: 600px;
+}
+
+.statement h2 {
+  font-size: clamp(45px, 6vw, 80px);
+}
+
+.statementContent > p:not(.eyebrow) {
+  max-width: 450px;
+
+  margin-bottom: 35px;
+
+  line-height: 1.7;
+}
+
+.outlineButton {
+  display: inline-block;
+
+  padding: 15px 28px;
+
+  border: 1px solid white;
+
+  font-size: 11px;
+  letter-spacing: 1.5px;
+
+  transition: all 0.3s ease;
+}
+
+.outlineButton:hover {
+  background: white;
+  color: #171717;
+}
+
+/* =========================
+   NEWSLETTER
+========================= */
+
+.newsletter {
+  padding: 130px 20px;
+
+  text-align: center;
+}
+
+.newsletter h2 {
+  margin-bottom: 20px;
+}
+
+.newsletter > p:not(.eyebrow) {
+  margin-bottom: 35px;
+
+  color: #777;
+}
+
+.emailBox {
+  max-width: 500px;
+
+  margin: auto;
+
+  display: flex;
+
+  border-bottom: 1px solid #333;
+}
+
+.emailBox input {
+  flex: 1;
+
+  padding: 15px 5px;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.emailBox input::placeholder {
+  color: #888;
+}
+
+.emailBox button {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+}
+
+.emailBox button:hover {
+  opacity: 0.5;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  padding: 80px 5% 30px;
+
+  background: #171717;
+  color: white;
+}
+
+.footerTop {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 80px;
+}
+
+.footerLogo {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 6px;
+}
+
+.footerLinks {
+  display: flex;
+  gap: 100px;
+}
+
+.footerLinks div {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footerLinks p {
+  margin-bottom: 8px;
+
+  color: #888;
+
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.footerLinks a {
+  font-size: 12px;
+}
+
+.footerLinks a:hover {
+  opacity: 0.5;
+}
+
+.copyright {
+  padding-top: 25px;
+
+  border-top: 1px solid #444;
+
+  color: #888;
+
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+  .navLinks {
+    display: none;
+  }
+
+  .productGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .fitsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .fitCard:nth-child(2) {
+    border-right: none;
+  }
+
+  .fitCard {
+    border-bottom: 1px solid #555;
+  }
+
+  .footerTop {
+    display: block;
+  }
+
+  .footerLogo {
+    margin-bottom: 60px;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+  .navbar {
+    height: 65px;
+    padding: 0 20px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .navActions {
+    gap: 15px;
+  }
+
+  .navActions button:first-child {
+    display: none;
+  }
+
+  .hero {
+    min-height: 700px;
+  }
+
+  .heroContent {
+    padding: 30px;
+  }
+
+  .hero h1 {
+    letter-spacing: -3px;
+  }
+
+  .heroText {
+    font-size: 15px;
+  }
+
+  .intro {
+    padding: 90px 25px;
+  }
+
+  .intro h2 {
+    letter-spacing: -2px;
+  }
+
+  .productsSection {
+    padding: 70px 20px;
+  }
+
+  .sectionHeader {
+    align-items: flex-start;
+  }
+
+  .productGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .productInfo {
+    display: block;
+  }
+
+  .productInfo span {
+    display: block;
+    margin-top: 8px;
+  }
+
+  .quickAdd {
+    display: none;
+  }
+
+  .fitsSection {
+    padding: 80px 20px;
+  }
+
+  .fitsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .fitCard {
+    min-height: 250px;
+
+    border-right: none;
+  }
+
+  .statement {
+    min-height: 550px;
+
+    padding: 70px 25px;
+  }
+
+  .newsletter {
+    padding: 90px 20px;
+  }
+
+  .newsletter h2 {
+    font-size: 42px;
+  }
+
+  .footerLinks {
+    gap: 45px;
+
+    flex-wrap: wrap;
+  }
 }

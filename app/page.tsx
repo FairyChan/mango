@@ -1,69 +1,256 @@
-import Image from "next/image";
+const products = [
+  {
+    name: "The Classic Straight",
+    price: "₹2,499",
+    fit: "Straight Fit",
+    image:
+      "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    name: "The Everyday Blue",
+    price: "₹2,699",
+    fit: "Relaxed Fit",
+    image:
+      "https://images.unsplash.com/photo-1582418702059-97ebafb35d09?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    name: "The Wide Leg",
+    price: "₹2,899",
+    fit: "Wide Leg",
+    image:
+      "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    name: "The Dark Denim",
+    price: "₹2,799",
+    fit: "Straight Fit",
+    image:
+      "https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=900&q=80",
+  },
+];
+
+const fits = [
+  {
+    name: "STRAIGHT",
+    description: "Classic. Clean. Always relevant.",
+  },
+  {
+    name: "WIDE LEG",
+    description: "Roomy silhouettes made modern.",
+  },
+  {
+    name: "BAGGY",
+    description: "Relaxed fits for everyday movement.",
+  },
+  {
+    name: "FLARED",
+    description: "A little retro. A lot of attitude.",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
+    <main>
+      {/* NAVBAR */}
+      <nav className="navbar">
+        <a href="/" className="logo">
+          COOKIE
+        </a>
+
+        <div className="navLinks">
+          <a href="#shop">Shop</a>
+          <a href="#fits">Fits</a>
+          <a href="#about">About</a>
+        </div>
+
+        <div className="navActions">
+          <button>Search</button>
+          <button>Bag (0)</button>
+        </div>
+      </nav>
+
+      {/* HERO */}
+      <section className="hero">
+        <div className="heroImage">
+          <img
+            src="https://images.unsplash.com/photo-1548883354-7622d03aca27?auto=format&fit=crop&w=1800&q=90"
+            alt="Cookie denim collection"
+          />
+        </div>
+
+        <div className="heroOverlay" />
+
+        <div className="heroContent">
+          <p className="eyebrow">DENIM, DONE DIFFERENTLY.</p>
+
+          <h1>
+            FIND YOUR
+            <br />
+            PERFECT FIT.
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+          <p className="heroText">
+            Jeans made for real days, real movement and every version of you.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
+
+          <a href="#shop" className="primaryButton">
+            SHOP DENIM
           </a>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* INTRO */}
+      <section className="intro" id="about">
+        <p className="eyebrow">WELCOME TO COOKIE</p>
+
+        <h2>
+          GOOD JEANS.
+          <br />
+          NO COMPLICATIONS.
+        </h2>
+
+        <p className="introText">
+          We believe finding a pair of jeans you actually love shouldn't be
+          complicated. Cookie creates easy-to-wear denim with considered fits,
+          everyday comfort and a little personality.
+        </p>
+      </section>
+
+      {/* PRODUCTS */}
+      <section className="productsSection" id="shop">
+        <div className="sectionHeader">
+          <div>
+            <p className="eyebrow">THE DENIM EDIT</p>
+            <h2>NEW ARRIVALS</h2>
+          </div>
+
+          <a href="#shop">VIEW ALL →</a>
+        </div>
+
+        <div className="productGrid">
+          {products.map((product) => (
+            <article className="productCard" key={product.name}>
+              <div className="productImage">
+                <img src={product.image} alt={product.name} />
+
+                <button className="quickAdd">
+                  QUICK ADD
+                </button>
+              </div>
+
+              <div className="productInfo">
+                <div>
+                  <h3>{product.name}</h3>
+                  <p>{product.fit}</p>
+                </div>
+
+                <span>{product.price}</span>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* FITS */}
+      <section className="fitsSection" id="fits">
+        <div className="fitsIntro">
+          <p className="eyebrow">FIND YOUR FIT</p>
+
+          <h2>
+            ONE DENIM.
+            <br />
+            YOUR WAY.
+          </h2>
+        </div>
+
+        <div className="fitsGrid">
+          {fits.map((fit) => (
+            <div className="fitCard" key={fit.name}>
+              <span>COOKIE DENIM</span>
+
+              <h3>{fit.name}</h3>
+
+              <p>{fit.description}</p>
+
+              <a href="#shop">SHOP {fit.name} →</a>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* BRAND STATEMENT */}
+      <section className="statement">
+        <div className="statementContent">
+          <p className="eyebrow">WHY COOKIE?</p>
+
+          <h2>
+            DENIM THAT
+            <br />
+            MOVES WITH YOU.
+          </h2>
+
+          <p>
+            From your first coffee to your last plan of the day, Cookie is
+            designed to keep up.
+          </p>
+
+          <a href="#about" className="outlineButton">
+            OUR STORY
+          </a>
+        </div>
+      </section>
+
+      {/* NEWSLETTER */}
+      <section className="newsletter">
+        <p className="eyebrow">STAY IN THE LOOP</p>
+
+        <h2>GOOD THINGS ARE COMING.</h2>
+
+        <p>
+          Sign up for new drops, exclusive launches and everything Cookie.
+        </p>
+
+        <div className="emailBox">
+          <input
+            type="email"
+            placeholder="Your email address"
+          />
+
+          <button>JOIN →</button>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer>
+        <div className="footerTop">
+          <div className="footerLogo">COOKIE</div>
+
+          <div className="footerLinks">
+            <div>
+              <p>SHOP</p>
+              <a href="#shop">New Arrivals</a>
+              <a href="#shop">All Jeans</a>
+              <a href="#fits">Fits</a>
+            </div>
+
+            <div>
+              <p>ABOUT</p>
+              <a href="#about">Our Story</a>
+              <a href="#about">Contact</a>
+            </div>
+
+            <div>
+              <p>FOLLOW</p>
+              <a href="#">Instagram</a>
+              <a href="#">Pinterest</a>
+            </div>
+          </div>
+        </div>
+
+        <div className="copyright">
+          © 2026 COOKIE DENIM. ALL RIGHTS RESERVED.
+        </div>
+      </footer>
+    </main>
   );
 }
